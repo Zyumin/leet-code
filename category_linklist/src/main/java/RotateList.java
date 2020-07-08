@@ -25,6 +25,12 @@
  */
 public class RotateList {
 
+    /**
+     * 解题思路：把组成环，然后找到合适的位置断开
+     * 当 k<n , k-n   new head
+     * 当 k>n , k-n%k  new head
+     * @param args
+     */
     public static void main(String[] args) {
 
         ListNode l1 = new ListNode(1) ;
@@ -32,6 +38,7 @@ public class RotateList {
         l1.next.next = new ListNode(3) ;
         l1.next.next.next = new ListNode(4) ;
         l1.next.next.next.next = new ListNode(5) ;
+
         ListNode listNode = solution(l1,2);
 
         while (listNode != null) {
@@ -43,6 +50,28 @@ public class RotateList {
     }
 
     public static ListNode solution(ListNode node, int k){
-        return null;
+        //bad case
+
+        ListNode head = node;
+        ListNode tail = node;
+
+        int n =1;
+        for(;tail.next!=null;tail = tail.next){
+            n++;
+        }
+        //组成环
+        tail.next = head;
+
+        // k-n%k-1 找到尾巴， 方便断开
+        for(int i =0;i< n-k%n-1;i++){
+            head = head.next;
+        }
+
+        //记住头
+        ListNode newHead = head.next;
+        //断开环
+        head.next = null;
+
+        return newHead;
     }
 }
