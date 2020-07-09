@@ -33,7 +33,6 @@ public class AddTwoNumbers {
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
 
-
         ListNode listNode = solution(l1,l2);
         while(listNode!=null){
             System.out.print(listNode.val);
@@ -47,7 +46,6 @@ public class AddTwoNumbers {
 
         ListNode head = new ListNode(0);
         ListNode curr = head;
-
 
         int carry =0;
         while(l1!=null||l2!=null){

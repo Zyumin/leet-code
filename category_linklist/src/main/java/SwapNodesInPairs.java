@@ -35,6 +35,7 @@ public class SwapNodesInPairs {
     }
 
     /**
+     * 1->2->3->4, 你应该返回 2->1->4->3.
      * @param head
      * @return
      */
@@ -62,7 +63,7 @@ public class SwapNodesInPairs {
 
             // Reinitializing the head and prevNode for next swap
             prevNode = firstNode;
-            head = firstNode.next; // jump
+            head = firstNode.next;
         }
 
         // Return the new head node.

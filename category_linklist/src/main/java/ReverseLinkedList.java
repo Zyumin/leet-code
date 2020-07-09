@@ -38,6 +38,7 @@ public class ReverseLinkedList {
     }
 
     /**
+     * 迭代
      * @param head
      * @return
      */
@@ -46,11 +47,14 @@ public class ReverseLinkedList {
         ListNode prev = null;
         ListNode curr = head;
         while(curr!=null){
-
+            //记录后驱节点,防止丢失
             ListNode nextTemp = curr.next;
+            //反转
             curr.next = prev;
 
+            //移动前驱节点
             prev = curr;
+            //移动当前节点
             curr = nextTemp;
         }
 
@@ -58,6 +62,7 @@ public class ReverseLinkedList {
     }
 
     /**
+     * 递归
      *  n(k+1)的下一个是n(k)
      *  则 nk.next.next = nk;
      * @param head
