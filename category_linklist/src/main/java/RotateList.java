@@ -55,6 +55,7 @@ public class RotateList {
         ListNode head = node;
         ListNode tail = node;
 
+        //计算长度
         int n =1;
         for(;tail.next!=null;tail = tail.next){
             n++;

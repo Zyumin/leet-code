@@ -53,13 +53,10 @@ public class ReverseLinkedList_ii {
     // 将链表的前 n 个节点反转（n <= 链表长度）
     public static ListNode reverseN(ListNode head, int n){
         if(n==1){
-
             // 记录第 n + 1 个节点
             successor = head.next;
             return head;
-
         }
-
 
         ListNode p = reverseN(head.next,n-1);
         head.next.next = head;

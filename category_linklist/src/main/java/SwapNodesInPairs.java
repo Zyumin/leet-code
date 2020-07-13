@@ -41,7 +41,6 @@ public class SwapNodesInPairs {
      */
     public static ListNode solution1(ListNode head){
 
-
         // Dummy node acts as the prevNode for the head node
         // of the list and hence stores pointer to the head node.
         ListNode dummy = new ListNode(-1);
@@ -71,6 +70,11 @@ public class SwapNodesInPairs {
     }
 
 
+    /**
+     * 1->2->3->4, 你应该返回 2->1->4->3.
+     * @param head
+     * @return
+     */
     public static ListNode solution(ListNode head){
         //注意 head == null 的判断
         if (head == null || head.next == null) {return head;}
@@ -83,6 +87,6 @@ public class SwapNodesInPairs {
 
         second.next = first;
         return second;
-
     }
+
 }

@@ -73,7 +73,7 @@ public class ReverseLinkedList {
         if (head == null || head.next == null) {return head;}
         //先递归到尾部
         ListNode p = solution(head.next);
-
+//        System.out.println(p.val);
         head.next.next = head;
         head.next = null;
         return p;
