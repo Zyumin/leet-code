@@ -35,6 +35,7 @@ public class BestTimeBuyAndSell {
     public static int solution(int[] nums) {
 
         //bad case
+
         int[] dp = new int[nums.length];
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
