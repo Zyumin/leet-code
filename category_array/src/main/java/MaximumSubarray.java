@@ -21,30 +21,64 @@ public class MaximumSubarray {
     public static void main(String[] args) {
 
         int []nums = new int[]{-2,1,-3,4,-1,2,1,-5,4};
-        System.out.println(solution(nums));
+        System.out.println(solutionV2(nums));
 
     }
 
-    public static int solution(int[] nums) {
+//    public static int solution(int[] nums) {
+//
+//        //bad case
+//        if (nums.length == 0) {
+//            return 0;
+//        }
+//        if (nums.length == 1) {
+//            return nums[0];
+//        }
+//
+//        int ans = 0, pre = nums[0];
+//        for (int i = 1; i < nums.length; i++) {
+//            pre = Math.max(pre + nums[i], nums[i]);
+//            ans = Math.max(pre, ans);
+//        }
+//
+//        return ans;
+//
+//    }
 
-        //bad case
-        if (nums.length == 0) {
+
+
+    public static int solutionV2(int []nums){
+        if(nums.length==0){
             return 0;
         }
-        if (nums.length == 1) {
-            return nums[0];
+        int max = nums[0];
+        int pre = 0;
+        for(int i=0;i<nums.length;i++){
+            pre = Math.max(nums[i],pre+nums[i]);
+            max = Math.max(max,pre);
         }
-
-        int ans = 0, pre = nums[0];
-
-        for (int i = 1; i < nums.length; i++) {
-            pre = Math.max(pre + nums[i], nums[i]);
-            ans = Math.max(pre, ans);
-        }
-
-        return ans;
+        return max;
 
     }
+
+//    public static int solution(int []nums){
+//
+//
+//        if(nums.length==0){
+//            return 0;
+//        }
+//
+//        int max = nums[0];
+//        int pre = 0;
+//        for(int i=0;i<nums.length;i++){
+//            pre = Math.max(nums[i],pre+nums[i]);
+//            max = Math.max(max,pre);
+//        }
+//
+//
+//        return max;
+//
+//    }
 
 
 }

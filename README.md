@@ -1,6 +1,8 @@
 
+commit test 2022-06-30
 
-# 递归实现
+# 树遍历
+## 递归实现
 
 ```java
 public static void preOrderRecur(TreeNode head) {
@@ -16,11 +18,7 @@ public static void preOrderRecur(TreeNode head) {
 
 
 
-# 利用栈实现
-
-
-
-
+## 利用栈实现
 
 ## 前序遍历 (中->左->右)
 
@@ -51,6 +49,7 @@ public static void preOrderIteration(TreeNode head) {
 
 
 ## 中序遍历(左->中->右) 
+左->中->右
 
 ```java
  public List < Integer > inorderTraversal(TreeNode root) {
@@ -134,9 +133,6 @@ public static void postOrderIteration(TreeNode head) {
 	}
 
 ```
-
-
-
 
 
 层序遍历  :bfs
@@ -275,7 +271,6 @@ public TreeNode invertTree(TreeNode root) {
 
 
 
-
 # 快速排序
 
 https://www.lagou.com/lgeduarticle/6225.html
@@ -316,8 +311,38 @@ public void sort(int low, int hight, int array[]) {
 
 https://www.cnblogs.com/9dragon/p/10777017.html
 
+```java
+ private static <T extends Comparable<? super T>> void quickSelect(T[] a, int left, int right, int k) {
+        if (left + CUTOFF <= right) {
+            //三数中值分割法获取枢纽元
+            T pivot = median3(a, left, right);
 
+            //开始分割序列
+            int i = left, j = right - 1;
+            for (; ; ) {
+                while (a[++i].compareTo(pivot) < 0) {
+                }
+                while (a[--j].compareTo(pivot) > 0) {
+                }
+                if (i < j) {
+                    swapReferences(a, i, j);
+                } else {
+                    break;
+                }
+            }
+            //将枢纽元与位置i的元素交换位置
+            swapReferences(a, i, right - 1);
 
+            if (k <= i) {
+                quickSelect(a, left, i - 1, k);
+            } else if (k > i + 1) {
+                quickSelect(a, i + 1, right, k);
+            }
+        } else {
+            insertionSort(a, left, right);
+        }
+    }
+```
 
 
 
@@ -327,21 +352,96 @@ https://www.cnblogs.com/9dragon/p/10777017.html
  
 
 ```java
-class Solution {
-  public int search(int[] nums, int target) {
-    int pivot, left = 0, right = nums.length - 1;
-    while (left <= right) {
-      pivot = left + (right - left) / 2;
-      if (nums[pivot] == target) return pivot;
-      if (target < nums[pivot]){
-           right = pivot - 1;
-      }else{
-           left = pivot + 1;
-      }
-    }
-    return -1;
-  }
-}
+c    /**
+      *  二分法查找
+      * @param num 数组
+      * @param target 目标值
+      * @return
+      */
+     public int binarySearch(int num[],int target){
+         /**
+          * [left,right]
+          */
+         int left = 0,right=num.length-1;
+         while(left<=right){
+ 
+             int mid = left+ (right-left)/2;
+ 
+             if(num[mid]>target){
+                 right = mid-1;
+             } else if(num[mid]<target){
+                 left = mid+1;
+             } else if(num[mid]==target){
+                 return mid;
+             }
+         }
+         return -1;
+     }
+ 
+ 
+     /**
+      * 返回左边界
+      * @param num
+      * @param target
+      * @return
+      */
+     public int binarySearchLeft(int num[],int target){
+         /**
+          * [left,right]
+          */
+         int left = 0,right=num.length-1;
+         while(left<=right){
+             int mid = left+ (right-left)/2;
+             if(num[mid]>target){
+                 right = mid-1;
+             } else if(num[mid]<target){
+                 left = mid+1;
+             } else if(num[mid]==target){
+                 //锁定左边边界
+                 right = mid - 1;
+             }
+         }
+         if(left>=num.length||num[left]!=target){
+             return -1;
+         }
+         return left;
+     }
+ 
+     /**
+      * 返回右边界
+      * @param num
+      * @param target
+      * @return
+      */
+     public int binarySearchRight(int num[],int target){
+         /**
+          * [left,right]
+          */
+         int left = 0,right=num.length-1;
+         while(left<=right){
+             int mid = left+ (right-left)/2;
+             if(num[mid]>target){
+                 right = mid-1;
+             } else if(num[mid]<target){
+                 left = mid+1;
+             } else if(num[mid]==target){
+                 left = mid + 1;
+             }
+         }
+         if(right<0||num[right]!=target){
+             return -1;
+         }
+         return right;
+     }
+ 
+ 
+     public static void main(String[] args) {
+         Demo demo = new Demo();
+         int []num = {1,2,3,6,6,6,7,8,10};
+         System.out.println(demo.binarySearch(num,6));
+         System.out.println(demo.binarySearchLeft(num,6));
+         System.out.println(demo.binarySearchRight(num,6));
+     }
 ```
 
 
@@ -391,6 +491,9 @@ class Solution {
 
 # 双指针
 
+链表问题
+    
+
 两数之和
 
 ```java
@@ -430,11 +533,9 @@ class Solution {
 
 
 
+#滑动窗口
 
-
-# 无重复最长子串
-
-滑动窗口
+## 无重复最长子串
 
 ```java
 public class Solution {

@@ -38,28 +38,77 @@ public class ReverseLinkedList {
     }
 
     /**
-     * 迭代
+     *  1->2->3
+     *
+     *  1<-2
+     * @return
+     */
+    public ListNode reverse(ListNode node){
+        ListNode prev = null;
+
+        ListNode curr = node;
+        while(curr!=null){
+            ListNode temp  = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = temp;
+        }
+        return prev;
+    }
+
+    /**
+     * k(n)
      * @param head
      * @return
      */
-    public static ListNode solution1(ListNode head){
+    public ListNode reverse2(ListNode head){
+        if (head == null || head.next == null) {return head;}
 
-        ListNode prev = null;
-        ListNode curr = head;
-        while(curr!=null){
-            //记录后驱节点,防止丢失
-            ListNode nextTemp = curr.next;
-            //反转
-            curr.next = prev;
+        // p = 3
+        ListNode p = reverse2(head.next);
+        // 1->2->3
+        // 当前层: 2
+        // 3->2 2->null
+        // 1->2<-3
 
-            //移动前驱节点
-            prev = curr;
-            //移动当前节点
-            curr = nextTemp;
-        }
+        // 当前层:1
+        // 2->1 1->null
+        // 1<-2<-3
+        head.next.next = head;
+        head.next=null;
 
-        return prev;
+        return p;
     }
+
+
+//    /**
+//     * 迭代
+//     * @param head
+//     * @return
+//     */
+//    public static ListNode solution1(ListNode head){
+//
+//        ListNode prev = null;
+//        ListNode curr = head;
+//        while(curr!=null){
+//            //记录后驱节点,防止丢失
+//            ListNode nextTemp = curr.next;
+//            //反转
+//            curr.next = prev;
+//
+//            //移动前驱节点
+//            prev = curr;
+//            //移动当前节点
+//            curr = nextTemp;
+//        }
+//
+//        return prev;
+//    }
+
+
+
+
 
     /**
      * 递归

@@ -55,27 +55,31 @@ public class MergeKSortedLists {
 
     }
 
+    /**
+     * 优先队列
+     * @param lists
+     * @return
+     */
     public static ListNode solution(ListNode[] lists) {
 
         //bad case
         if (lists == null || lists.length == 0) {return null;}
 
 
-        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                if (o1.val < o2.val) {return -1;}
-                else if (o1.val == o2.val){ return 0;}
-                else {return 1;}
-            }
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (o1, o2) -> {
+            if (o1.val < o2.val) {return -1;}
+            else if (o1.val == o2.val){ return 0;}
+            else {return 1;}
         });
 
-        ListNode head  = new ListNode(0);
-        ListNode curr = head;
+
         for(ListNode node: lists){
             queue.add(node);
         }
 
+
+        ListNode head  = new ListNode(0);
+        ListNode curr = head;
         while(!queue.isEmpty()){
             curr.next = queue.poll();
             curr = curr.next;

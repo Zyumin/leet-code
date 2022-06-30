@@ -7,6 +7,7 @@
 输入: [0,1,0,2,1,0,1,3,2,1,2,1]
 输出: 6
 
+接雨水
  * @date 2020-07-14 8:27 PM
  */
 public class TrappingRainWater {

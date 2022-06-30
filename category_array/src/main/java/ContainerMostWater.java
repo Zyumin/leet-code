@@ -22,8 +22,6 @@ public class ContainerMostWater {
 
         int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
         System.out.println(solution(nums));
-
-
     }
 
     public static int solution(int[] nums) {
@@ -37,17 +35,14 @@ public class ContainerMostWater {
         int ans = 0;
         while (head < tail) {
 
-            ans = Math.max(ans,
-                    Math.min(nums[head], nums[tail]) * (tail - head));
+            ans = Math.max(ans, Math.min(nums[head], nums[tail]) * (tail - head));
 
             if (nums[head] < nums[tail]) {
                 head++;
             } else {
                 tail--;
             }
-
         }
-
         return ans;
     }
 }

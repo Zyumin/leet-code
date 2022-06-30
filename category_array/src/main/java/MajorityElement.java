@@ -29,16 +29,12 @@ public class MajorityElement {
      */
     public static void main(String[] args) {
 
-
-
     }
 
     public static int solution(int nums[]){
 
         int vote=0,x=0;
-
         for(int num:nums){
-
             //替换投票人
             if(vote==0){ x= num;}
             //正负抵消
@@ -48,4 +44,22 @@ public class MajorityElement {
         return x;
     }
 
-}
+    public static int solution1(int nums[]){
+
+        int vote = 0,x=0;
+        for(int num:nums){
+
+            if(vote==0){
+                x=num;
+            }
+
+
+            vote+= (x==num?1:-1);
+
+        }
+        return x;
+    }
+
+
+
+    }

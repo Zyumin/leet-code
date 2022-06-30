@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author zhengyumin
@@ -30,9 +31,89 @@ public class TwoSum {
 
         int[] nums = new int[]{2, 7, 11, 15};
 
-        int[] res = solution(nums, 9);
+        int[] res = new TwoSum().solutionV3(nums, 9);
         System.out.println(res[0] + "," + res[1]);
 
+    }
+
+    public int[] solutionV3(int[] nums, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int[] res = new int[2];
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                for (int i = 0; i < nums.length; i++) {
+                    if (nums[i] == num) {
+                        res[1] = i;
+                    }
+                    if (nums[i] == target - num) {
+                        res[0] = i;
+                    }
+                }
+                return res;
+            } else {
+                map.put(target - num, num);
+            }
+        }
+
+        return res;
+    }
+
+    //处理相同元素
+    public static int[][] twoSum(int[] arr, int k) {
+        // write code here
+        int left = 0, right = arr.length - 1;
+        int[][] result = new int[arr.length][2];
+        int index = 0;
+        while (left < right) {
+
+            if (arr[left] + arr[right] == k) {
+                if (left == 0 || arr[left] != arr[left - 1]) {
+                    result[index++] = new int[]{arr[left], arr[right]};
+                }
+                left++;
+                right--;
+            } else if (arr[left] + arr[right] < k) {
+                left++;
+            } else if (arr[left] + arr[right] > k) {
+                right--;
+            }
+        }
+        return result;
+    }
+
+
+    public int[] solutionV2(int[] nums, int target) {
+
+        int[] res = new int[2];
+        int[] temp = Arrays.copyOf(nums, nums.length);
+        Arrays.sort(temp);
+
+        int sum = 0, left = 0, right = nums.length - 1;
+        while (left != right) {
+
+            sum = temp[left] + temp[right];
+            if (sum == target) {
+                //find source
+                for (int i = 0; i < nums.length; i++) {
+                    if (nums[i] == temp[left]) {
+                        res[0] = i;
+                    }
+                    if (nums[nums.length - i - 1] == temp[right]) {
+                        res[1] = nums.length - i - 1;
+                    }
+                }
+                return res;
+
+            } else if (sum < target) {
+                left++;
+            } else if (sum > target) {
+                right--;
+            }
+        }
+
+        return res;
     }
 
     /**

@@ -21,12 +21,15 @@
 public class BestTimeBuyAndSell {
 
     /**
+     *
+     * 系列文章:
+     * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/wu-chong-shi-xian-xiang-xi-tu-jie-121-mai-mai-gu-p/
      * @param args
      */
     public static void main(String[] args) {
 
-//        int[] nums = new int[]{7, 1, 5, 3, 6, 4};
-        int[] nums = new int[]{7,6,4,3,1};
+        int[] nums = new int[]{7, 1, 5, 3, 6, 4};
+//        int[] nums = new int[]{7, 6, 4, 3, 1};
 
         System.out.println(solution(nums));
 
@@ -35,7 +38,6 @@ public class BestTimeBuyAndSell {
     public static int solution(int[] nums) {
 
         //bad case
-
         int[] dp = new int[nums.length];
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
@@ -45,10 +47,15 @@ public class BestTimeBuyAndSell {
             dp[i] = min;
         }
 
+        //dp = {7,1,1,1,1,1}
+
         int profit = 0;
         for (int i = 0; i < nums.length; i++) {
             profit = Math.max(profit, nums[i] - dp[i]);
         }
         return profit;
     }
+
+
+
 }

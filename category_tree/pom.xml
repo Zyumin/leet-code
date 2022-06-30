@@ -7,6 +7,13 @@
     <groupId>com.zhengyumin</groupId>
     <artifactId>category_tree</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.zhengyumin</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

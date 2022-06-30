@@ -25,7 +25,7 @@ public class ReverseInteger {
      */
     public static void main(String[] args) {
 
-        int input = 2147483612;
+        int input = -2147483010;
         System.out.println(solution(input));
 
     }

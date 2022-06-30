@@ -44,6 +44,37 @@ public class LinkedListCycle {
         }
         return true;
 
+    }
+
+
+
+    private static boolean solutionV2(ListNode node) {
+//        ListNode slow = node;
+//        ListNode fast = node.next;
+//
+//        while(slow!=fast){
+//            if (fast == null || fast.next == null) {
+//                return false;
+//            }
+//            slow = slow.next;
+//            fast = fast.next.next;
+//        }
+//        return true;
+
+        ListNode slow = node;
+        ListNode fast = node.next;
+        while(slow!=fast){
+            if(fast==null||fast.next==null){
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+        return true;
+
 
     }
+
+
 }

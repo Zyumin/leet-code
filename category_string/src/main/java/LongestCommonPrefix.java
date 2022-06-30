@@ -1,3 +1,5 @@
+import com.sun.tools.javac.util.StringUtils;
+
 /**
  * @author zhengyumin
  * @description 链接：https://leetcode-cn.com/problems/longest-common-prefix
@@ -44,7 +46,6 @@ public class LongestCommonPrefix {
 
             return "";
         }
-
         String prefix = input[0];
         for (int i = 1; i < input.length; i++) {
             prefix = commonPrefix(prefix, input[i]);
@@ -52,9 +53,7 @@ public class LongestCommonPrefix {
                 break;
             }
         }
-
         return prefix;
-
     }
 
 
@@ -68,6 +67,5 @@ public class LongestCommonPrefix {
             }
         }
         return s1.substring(0, i);
-
     }
 }

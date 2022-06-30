@@ -45,10 +45,41 @@ public class ValidParentheses {
     public static void main(String[] args) {
 
         String input = "{[]}";
-        System.out.println(solution(input));
+        System.out.println(solutionV2(input));
 
 
     }
+
+
+
+
+    public static boolean solutionV2(String s){
+        Map<Character,Character> map = new HashMap<>();
+
+        map.put('}','{');
+        map.put(']','[');
+        map.put(')','(');
+
+        Stack<Character> stack = new Stack<>();
+        for(int i=0;i<s.length();i++){
+            char key = s.charAt(i);
+            if(map.containsKey(key)){
+                if(stack.isEmpty()||!stack.pop().equals(map.get(key))){
+                    return false;
+                }
+
+            }else{
+                stack.push(key);
+            }
+        }
+
+        return stack.isEmpty();
+
+
+    }
+
+
+
 
     public static boolean solution(String input){
 
@@ -74,4 +105,7 @@ public class ValidParentheses {
         return stack.pop().equals('#');
 
     }
+
+
+
 }

@@ -55,7 +55,7 @@ public class SwapNodesInPairs {
             ListNode firstNode = head;
             ListNode secondNode = head.next;
 
-            // Swapping
+            // Swapping  firstNode secondNode
             prevNode.next = secondNode;
             firstNode.next = secondNode.next;
             secondNode.next = firstNode;
@@ -71,6 +71,39 @@ public class SwapNodesInPairs {
 
 
     /**
+     *  迭代
+     * @return
+     */
+    public ListNode reverse(ListNode head){
+
+        //记录头节点
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+
+        ListNode pre = dummy;
+
+
+        //1->2->3->4, 你应该返回 2->1->4->3.
+        while(head!=null&&head.next!=null){
+            ListNode first = head;
+            ListNode second = head.next;
+
+            //swap
+            first.next = second.next;
+            second.next = first;
+            pre.next = second;
+
+            pre = first;
+            head = first.next;
+        }
+
+        return dummy.next;
+
+    }
+
+
+    /**
      * 1->2->3->4, 你应该返回 2->1->4->3.
      * @param head
      * @return
@@ -78,13 +111,19 @@ public class SwapNodesInPairs {
     public static ListNode solution(ListNode head){
         //注意 head == null 的判断
         if (head == null || head.next == null) {return head;}
-        //先递归到尾部
 
+        // 3->4
         ListNode first = head;
         ListNode second = head.next;
 
-        first.next = solution(second.next);
 
+        //3->null
+        //4->3
+        //return 4;
+
+        //first指向递归后的节点
+        first.next = solution(second.next);
+        //second指向first
         second.next = first;
         return second;
     }
